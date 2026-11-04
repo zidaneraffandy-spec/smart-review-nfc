@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Ulasan Pelanggan</title>
+  <link rel="stylesheet" href="/styles/app.css">
+</head>
+<body>
+  <main class="card" id="app">
+    <section id="state-loading" class="center" aria-live="polite">
+      <div class="spinner" aria-hidden="true"></div>
+      <p class="muted">Memuat…</p>
+    </section>
+
+    <section id="state-message" class="center" hidden>
+      <h1 id="msg-title"></h1>
+      <p id="msg-text" class="muted"></p>
+    </section>
+
+    <section id="state-active" hidden>
+      <header class="store">
+        <h1 id="store-name"></h1>
+        <p id="store-desc" class="muted"></p>
+      </header>
+
+      <h2 class="question">Bagaimana pengalaman Anda hari ini?</h2>
+      <div id="stars" class="stars" role="radiogroup" aria-label="Beri rating 1 sampai 5 bintang">
+        <button type="button" class="star" role="radio" aria-checked="false" data-value="1" aria-label="1 bintang">★</button>
+        <button type="button" class="star" role="radio" aria-checked="false" data-value="2" aria-label="2 bintang">★</button>
+        <button type="button" class="star" role="radio" aria-checked="false" data-value="3" aria-label="3 bintang">★</button>
+        <button type="button" class="star" role="radio" aria-checked="false" data-value="4" aria-label="4 bintang">★</button>
+        <button type="button" class="star" role="radio" aria-checked="false" data-value="5" aria-label="5 bintang">★</button>
+      </div>
+      <p class="skip"><a id="skip-link" href="#" target="_blank" rel="noopener noreferrer">Langsung tulis ulasan di Google</a></p>
+
+      <section id="after-rating" hidden>
+        <p id="rating-text" class="lead"></p>
+        <a id="btn-google" class="btn" href="#" target="_blank" rel="noopener noreferrer">Tulis ulasan di Google</a>
+
+        <div id="feedback-box" hidden>
+          <hr>
+          <label for="feedback" class="label">Atau sampaikan kritik dan saran langsung kepada pemilik</label>
+          <textarea id="feedback" rows="4" maxlength="800" placeholder="Ceritakan apa yang bisa kami perbaiki…"></textarea>
+          <p id="feedback-error" class="error" role="alert" hidden></p>
+          <button type="button" id="btn-wa" class="btn wa">Kirim masukan lewat WhatsApp</button>
+          <p id="wa-note" class="note" hidden></p>
+        </div>
+      </section>
+
+      <p class="thanks">Terima kasih sudah meluangkan waktu. Ceritakan pengalaman Anda dengan jujur.</p>
+    </section>
+  </main>
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

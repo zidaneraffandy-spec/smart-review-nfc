@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin: Kartu Ulasan</title>
+  <link rel="stylesheet" href="/styles/admin.css">
+</head>
+<body>
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <!-- LOGIN -->
+  <section id="view-login" class="login" hidden>
+    <form id="login-form" class="panel" autocomplete="on">
+      <h1>Masuk admin</h1>
+      <label for="l-user">Username</label>
+      <input id="l-user" name="username" autocomplete="username" required maxlength="100">
+      <label for="l-pass">Password</label>
+      <input id="l-pass" name="password" type="password" autocomplete="current-password" required maxlength="200">
+      <p id="login-error" class="err" role="alert" hidden></p>
+      <button type="submit" class="btn primary" id="btn-login">Masuk</button>
+    </form>
+  </section>
+
+  <!-- APLIKASI -->
+  <div id="view-app" hidden>
+    <header class="topbar">
+      <h1>Kartu Ulasan</h1>
+      <button type="button" class="btn small" id="btn-logout">Keluar</button>
+    </header>
+    <main>
+      <section class="stats" aria-label="Ringkasan">
+        <div class="stat"><b id="st-total">0</b><span>Total</span></div>
+        <div class="stat active"><b id="st-active">0</b><span>Aktif</span></div>
+        <div class="stat pending"><b id="st-pending">0</b><span>Belum aktif</span></div>
+        <div class="stat inactive"><b id="st-inactive">0</b><span>Nonaktif</span></div>
+      </section>
+
+      <section class="toolbar">
+        <input id="search" type="search" placeholder="Cari ID atau nama toko" aria-label="Cari kartu" maxlength="60">
+        <select id="filter" aria-label="Filter status">
+          <option value="">Semua status</option>
+          <option value="pending">Belum aktif</option>
+          <option value="active">Aktif</option>
+          <option value="inactive">Nonaktif</option>
+        </select>
+        <button type="button" class="btn primary" id="btn-register">+ Daftarkan ID</button>
+      </section>
+
+      <ul id="card-list" class="list"></ul>
+      <p id="empty" class="empty" hidden>Belum ada kartu. Tekan "Daftarkan ID" untuk membuat ID kartu baru.</p>
+    </main>
+  </div>
+
+  <!-- DIALOG: AKTIVASI / EDIT -->
+  <dialog id="dlg-card">
+    <form id="card-form" novalidate>
+      <h2 id="card-title"></h2>
+      <p class="meta"><code id="f-id"></code> <span id="f-status" class="badge"></span></p>
+
+      <label for="f-name">Nama UMKM</label>
+      <input id="f-name" maxlength="60" required>
+      <small class="err" data-err="name"></small>
+
+      <label for="f-desc">Deskripsi singkat</label>
+      <textarea id="f-desc" rows="2" maxlength="160"></textarea>
+      <small class="err" data-err="description"></small>
+
+      <label for="f-review">Link Google Review</label>
+      <input id="f-review" type="url" inputmode="url" placeholder="https://g.page/r/..." maxlength="500" required>
+      <small class="err" data-err="reviewUrl"></small>
+
+      <label for="f-wa">Nomor WhatsApp owner</label>
+      <input id="f-wa" type="tel" inputmode="tel" placeholder="081234567890" maxlength="20" required>
+      <small class="err" data-err="whatsapp"></small>
+
+      <label for="f-color">Warna utama halaman</label>
+      <input id="f-color" type="color" value="#2563eb">
+      <small class="err" data-err="color"></small>
+
+      <div id="card-done" class="done" hidden>
+        <p id="card-done-text"></p>
+        <div class="row">
+          <a id="done-open" class="btn small" href="#" target="_blank" rel="noopener noreferrer">Buka halaman pelanggan</a>
+          <button type="button" class="btn small" id="done-copy">Salin URL</button>
+        </div>
+      </div>
+
+      <div class="row end">
+        <button type="button" class="btn" id="card-cancel">Tutup</button>
+        <button type="submit" class="btn primary" id="card-save">Simpan</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- DIALOG: DAFTARKAN ID -->
+  <dialog id="dlg-register">
+    <form id="register-form">
+      <h2>Daftarkan ID kartu</h2>
+      <label for="r-count">Jumlah ID (1-50)</label>
+      <input id="r-count" type="number" min="1" max="50" value="1" required>
+      <div id="reg-result" hidden>
+        <p class="muted">Tulis URL berikut ke chip NFC dan buat QR Code-nya:</p>
+        <textarea id="reg-urls" rows="6" readonly></textarea>
+        <button type="button" class="btn small" id="reg-copy">Salin semua URL</button>
+      </div>
+      <div class="row end">
+        <button type="button" class="btn" id="reg-cancel">Tutup</button>
+        <button type="submit" class="btn primary" id="reg-submit">Buat ID</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="/js/admin.js"></script>
+</body>
+</html>

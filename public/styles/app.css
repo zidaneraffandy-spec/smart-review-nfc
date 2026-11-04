@@ -1,0 +1,58 @@
+:root {
+  --brand: #2563eb;
+  --brand-ink: #ffffff;
+  --bg: #eef1f6;
+  --text: #16202e;
+  --muted: #5b6676;
+  --line: #dfe4ec;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0; min-height: 100vh; display: flex; justify-content: center; padding: 16px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.5;
+}
+.card {
+  width: 100%; max-width: 440px; align-self: flex-start; margin-top: 4vh;
+  background: #fff; border-radius: 16px; padding: 28px 22px 24px;
+  border-top: 6px solid var(--brand); box-shadow: 0 6px 24px rgba(20, 30, 50, .08);
+}
+.center { text-align: center; padding: 24px 0; }
+h1 { font-size: 1.5rem; line-height: 1.25; margin: 0 0 6px; }
+.store { text-align: center; margin-bottom: 20px; }
+.question { font-size: 1.1rem; text-align: center; margin: 0 0 8px; }
+.muted { color: var(--muted); margin: 0; }
+.stars { display: flex; justify-content: center; gap: 4px; margin: 6px 0; }
+.star {
+  background: none; border: 0; padding: 4px 6px; font-size: 2.6rem; line-height: 1;
+  color: #d3d9e2; cursor: pointer; border-radius: 8px;
+}
+.star.on { color: #f5a623; }
+.star:focus-visible, .btn:focus-visible, textarea:focus-visible, .skip a:focus-visible {
+  outline: 3px solid var(--brand); outline-offset: 2px;
+}
+.skip { text-align: center; margin: 4px 0 18px; font-size: .9rem; }
+.skip a { color: var(--muted); }
+.lead { margin: 0 0 14px; }
+.btn {
+  display: block; width: 100%; padding: 14px 16px; border: 0; border-radius: 12px;
+  background: var(--brand); color: var(--brand-ink); font: inherit; font-weight: 650;
+  text-align: center; text-decoration: none; cursor: pointer;
+}
+.btn.wa { background: #1a7f45; color: #fff; margin-top: 12px; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0 16px; }
+.label { display: block; font-weight: 600; margin-bottom: 8px; }
+textarea {
+  width: 100%; padding: 12px; border: 1px solid #c5ccd8; border-radius: 10px;
+  font: inherit; resize: vertical;
+}
+.error { color: #b42318; margin: 8px 0 0; font-size: .92rem; }
+.note { margin: 10px 0 0; padding: 10px 12px; background: #f1f5fb; border-radius: 10px; font-size: .92rem; }
+.thanks { margin: 22px 0 0; text-align: center; color: var(--muted); font-size: .92rem; }
+.spinner {
+  width: 32px; height: 32px; margin: 0 auto 10px; border-radius: 50%;
+  border: 3px solid var(--line); border-top-color: var(--brand); animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
